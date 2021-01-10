@@ -78,6 +78,23 @@ function processPlaylists($xml)
 
                 array_push($processed, $item);
             }
+
+            foreach ($subNode->NODE as $endNode) {
+                $nodeName = (string) $endNode->attributes()['Name'];
+
+                if (in_array($nodeName, $playlists)) {
+                    $item = [
+                        "name"      => $nodeName,
+                        "tracks"    => []
+                    ];
+
+                    foreach ($endNode->TRACK as $track) {
+                        array_push($item['tracks'], (string) $track->attributes()['Key']);
+                    }
+
+                    array_push($processed, $item);
+                }
+            }
         }
     }
 
