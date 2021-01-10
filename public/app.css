@@ -17096,6 +17096,10 @@ a.text-dark:focus {
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Raleway", Helvetica, sans-serif;
   background: #020623;
@@ -17337,6 +17341,14 @@ h6,
 .right-container .track-container {
   height: calc(100vh - 100px);
   overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+.right-container .scroll-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 400;
 }
 
 .tile {

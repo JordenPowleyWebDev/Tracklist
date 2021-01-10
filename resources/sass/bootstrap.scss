@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: $raleway;
   background: $darkBlue;
@@ -160,6 +164,14 @@ h1, h2, h3, h4, h5, h6,
   .track-container {
     height: calc(100vh - 100px);
     overflow-y: auto;
+    scroll-behavior: smooth;
+  }
+
+  .scroll-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 400;
   }
 }
 

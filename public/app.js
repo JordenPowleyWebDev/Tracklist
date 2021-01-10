@@ -77324,6 +77324,7 @@ var Tracks = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.renderTile = _this.renderTile.bind(_assertThisInitialized(_this));
     _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
+    _this.scrollView = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
     return _this;
   }
 
@@ -77398,12 +77399,18 @@ var Tracks = /*#__PURE__*/function (_React$Component) {
 
       var tracks = this.props.tracks;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "d-flex flex-column p-3 track-container"
+        className: "d-flex flex-column p-3 track-container",
+        ref: this.scrollView
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "px-3 mb-3 text-dark-blue text-center no-select"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, "Click a track to copy the details and paste in chat to make a request."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, "If I like it, I may play it")), tracks && tracks.length > 0 && tracks.map(function (element, index) {
         return _this3.renderTile(index, element);
-      }));
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "scroll-button p-3 bg-red-pink border border-white text-white rounded-pill cursor-pointer",
+        onClick: function onClick() {
+          _this3.scrollView.current.scrollTo(0, 0);
+        }
+      }, "Back To Top"));
     }
   }]);
 

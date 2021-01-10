@@ -7,6 +7,8 @@ export default class Tracks extends React.Component {
 
         this.renderTile     = this.renderTile.bind(this);
         this.handleClick    = this.handleClick.bind(this);
+
+        this.scrollView = React.createRef();
     }
 
     handleClick(track) {
@@ -83,7 +85,8 @@ export default class Tracks extends React.Component {
         const { tracks } = this.props;
 
         return (
-            <div className={"d-flex flex-column p-3 track-container"}>
+            <div className={"d-flex flex-column p-3 track-container"}
+                 ref={this.scrollView}>
                 <div className={"px-3 mb-3 text-dark-blue text-center no-select"}>
                     <small>Click a track to copy the details and paste in chat to make a request.</small>
                     <br />
@@ -92,6 +95,10 @@ export default class Tracks extends React.Component {
                 {tracks && tracks.length > 0 && tracks.map((element, index) => {
                     return this.renderTile(index, element);
                 })}
+                <div className={"scroll-button p-3 bg-red-pink border border-white text-white rounded-pill cursor-pointer"}
+                    onClick={() => {
+                    this.scrollView.current.scrollTo(0, 0);
+                }}>Back To Top</div>
             </div>
         );
     }
