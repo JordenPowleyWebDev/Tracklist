@@ -2,6 +2,7 @@ import React from 'react';
 import Filters from "./Filters";
 import Playlists from "./Playlists";
 import Tracks from "./Tracks";
+import * as ReactGA from "react-ga";
 
 export default class Page extends React.Component {
     constructor(props) {
@@ -55,7 +56,10 @@ export default class Page extends React.Component {
                     <Playlists
                         playlists={playlists}
                         selectedPlaylist={selectedPlaylist}
-                        onChange={(name) => this.setState({ selectedPlaylist: name })}
+                        onChange={(name) => {
+                            ReactGA.pageview("/playlist/"+name, null, "Playlist request: "+name)
+                            this.setState({selectedPlaylist: name})
+                        }}
                     />
                 </div>
                 <div className="right-container">

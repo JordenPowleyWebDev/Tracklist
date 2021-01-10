@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactGA from 'react-ga';
 import ReactDOM from "react-dom";
 import TrackList from "./data/tracklist.json"
 import { format } from 'date-fns'
@@ -38,6 +39,8 @@ export default class App extends React.Component {
             last_updated:   lastUpdated,
             playlists:      playlists,
         });
+
+        ReactGA.initialize('UA-128341357-3');
     }
 
     renderLoading() {

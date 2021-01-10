@@ -1,4 +1,5 @@
 import React from 'react';
+import * as ReactGA from "react-ga";
 
 export default class Tracks extends React.Component {
     constructor(props) {
@@ -16,6 +17,7 @@ export default class Tracks extends React.Component {
             selection;
 
         const trackText = track.name+" - "+track.artist+" - ["+selectedPlaylist+"]";
+        ReactGA.pageview("/track/"+track.artist+"/"+track.name, null, "Track request: "+trackText)
 
         // For IE.
         if (window.clipboardData) {
