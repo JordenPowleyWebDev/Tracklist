@@ -63,13 +63,9 @@ export default class Page extends React.Component {
                         searchValue={searchValue}
                         searchValueChange={(value) => this.setState({ searchValue: value })}
                     />
-                    <div className={"px-3 text-dark-blue text-center no-select"}>
-                        <small>Click a track to copy the details and past in chat to make a request.</small>
-                        <br />
-                        <small>If I like it, I may play it</small>
-                    </div>
                     <Tracks
                         tracks={tracks}
+                        selectedPlaylist={selectedPlaylist}
                     />
                 </div>
             </div>

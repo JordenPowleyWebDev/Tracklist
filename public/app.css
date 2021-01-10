@@ -17099,6 +17099,7 @@ a.text-dark:focus {
 body {
   font-family: "Raleway", Helvetica, sans-serif;
   background: #020623;
+  overflow: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -17248,6 +17249,17 @@ h6,
   position: relative;
 }
 
+.left-container .logo-container {
+  width: 100%;
+  height: 100px;
+  position: relative;
+  display: flex;
+}
+
+.left-container .logo-container div {
+  height: auto;
+}
+
 .left-container .playlist-container {
   height: 100vh;
   overflow-y: auto;
@@ -17258,8 +17270,16 @@ h6,
   height: 100vh;
   display: block;
   position: relative;
-  overflow-y: auto;
   background: #fff;
+}
+
+.right-container .search-container {
+  height: 100px;
+}
+
+.right-container .track-container {
+  height: calc(100vh - 100px);
+  overflow-y: auto;
 }
 
 .tile {

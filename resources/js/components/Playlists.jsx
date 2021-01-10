@@ -35,13 +35,15 @@ export default class Playlists extends React.Component {
         const { playlists } = this.props;
 
         return (
-            <div className={"h-100 d-flex flex-column playlist-container p-3"}>
-                <div className={"w-100 px-2 py-1 pb-4"}>
-                    <h1 className={"h5 mb-3 text-white text-center no-select"}>JordenWithAnE</h1>
+            <div className={"h-100 d-flex flex-column playlist-container"}>
+                <div className={"logo-container d-flex justify-content-center"}>
+                    <div className={"h5 mb-0 text-white text-center no-select d-flex justify-content-center align-items-center"}>JordenWithAnE</div>
                 </div>
-                {playlists && playlists.map((element, index) => {
-                    return this.renderTile(index, element);
-                })}
+                <div className={"px-3 pb-3 d-block position-relative"}>
+                    {playlists && playlists.map((element, index) => {
+                        return this.renderTile(index, element);
+                    })}
+                </div>
             </div>
         );
     }

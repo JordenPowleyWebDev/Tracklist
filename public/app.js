@@ -74989,9 +74989,9 @@ var Filters = /*#__PURE__*/function (_React$Component) {
 
       var displaySearchValue = this.state.displaySearchValue;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row m-0 mb-3 p-0 border-bottom border-dark-blue"
+        className: "row m-0 p-0 border-bottom border-dark-blue"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-12 m-0 p-3 py-4"
+        className: "col-12 m-0 p-0 px-3 search-container d-flex justify-content-center align-items-center"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "w-100 bg-white border border-dark-blue text-dark-blue p-2",
         type: "text",
@@ -75134,10 +75134,9 @@ var Page = /*#__PURE__*/function (_React$Component) {
             searchValue: value
           });
         }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "px-3 text-dark-blue text-center no-select"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, "Click a track to copy the details and past in chat to make a request."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, "If I like it, I may play it")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Tracks__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        tracks: tracks
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Tracks__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        tracks: tracks,
+        selectedPlaylist: selectedPlaylist
       })));
     }
   }]);
@@ -75234,14 +75233,16 @@ var Playlists = /*#__PURE__*/function (_React$Component) {
 
       var playlists = this.props.playlists;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "h-100 d-flex flex-column playlist-container p-3"
+        className: "h-100 d-flex flex-column playlist-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "w-100 px-2 py-1 pb-4"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        className: "h5 mb-3 text-white text-center no-select"
-      }, "JordenWithAnE")), playlists && playlists.map(function (element, index) {
+        className: "logo-container d-flex justify-content-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "h5 mb-0 text-white text-center no-select d-flex justify-content-center align-items-center"
+      }, "JordenWithAnE")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "px-3 pb-3 d-block position-relative"
+      }, playlists && playlists.map(function (element, index) {
         return _this2.renderTile(index, element);
-      }));
+      })));
     }
   }]);
 
@@ -75299,19 +75300,58 @@ var Tracks = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, Tracks);
 
     _this = _super.call(this, props);
-    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
     _this.renderTile = _this.renderTile.bind(_assertThisInitialized(_this));
+    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(Tracks, [{
     key: "handleClick",
-    value: function handleClick(track) {}
+    value: function handleClick(track) {
+      var selectedPlaylist = this.props.selectedPlaylist;
+      var success = true,
+          range = document.createRange(),
+          selection;
+      var trackText = track.name + " - " + track.artist + " - [" + selectedPlaylist + "]"; // For IE.
+
+      if (window.clipboardData) {
+        window.clipboardData.setData("Text", trackText);
+      } else {
+        // Create a temporary element off screen.
+        var tmpElem = $('<div>');
+        tmpElem.css({
+          position: "absolute",
+          left: "-1000px",
+          top: "-1000px"
+        }); // Add the input value to the temp element.
+
+        tmpElem.text(trackText);
+        $("body").append(tmpElem); // Select temp element.
+
+        range.selectNodeContents(tmpElem.get(0));
+        selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+
+        try {
+          success = document.execCommand("copy", false, null);
+        } catch (e) {
+          copyToClipboardFF(trackText);
+        }
+
+        if (success) {
+          alert("Track copied, paste in chat"); // Remove temp element.
+
+          tmpElem.remove();
+        }
+      }
+    }
   }, {
     key: "renderTile",
     value: function renderTile(index, track) {
       var _this2 = this;
 
+      var id = "track-" + track.id;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         key: track.id,
         onClick: function onClick() {
@@ -75322,13 +75362,9 @@ var Tracks = /*#__PURE__*/function (_React$Component) {
         className: "row m-0 p-0"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-12 col-md-6 m-0 p-0 pr-md-2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "no-select"
-      }, track.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, track.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-12 col-md-6 m-0 p-0 pl-md-2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "no-select"
-      }, track.artist))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, track.artist))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "no-select"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, "Added - ", track.date_added)));
     }
@@ -75339,8 +75375,10 @@ var Tracks = /*#__PURE__*/function (_React$Component) {
 
       var tracks = this.props.tracks;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "h-100 d-flex flex-column p-3"
-      }, tracks && tracks.length > 0 && tracks.map(function (element, index) {
+        className: "d-flex flex-column p-3 track-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "px-3 mb-3 text-dark-blue text-center no-select"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, "Click a track to copy the details and paste in chat to make a request."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, "If I like it, I may play it")), tracks && tracks.length > 0 && tracks.map(function (element, index) {
         return _this3.renderTile(index, element);
       }));
     }

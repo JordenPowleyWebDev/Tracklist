@@ -1,6 +1,7 @@
 body {
   font-family: $raleway;
   background: $darkBlue;
+  overflow: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -80,6 +81,17 @@ h1, h2, h3, h4, h5, h6,
   display: block;
   position: relative;
 
+  .logo-container {
+    width: 100%;
+    height: 100px;
+    position: relative;
+    display: flex;
+
+    div {
+      height: auto;
+    }
+  }
+
   .playlist-container {
     height: 100vh;
     overflow-y: auto;
@@ -91,8 +103,16 @@ h1, h2, h3, h4, h5, h6,
   height: 100vh;
   display: block;
   position: relative;
-  overflow-y: auto;
   background: $white;
+
+  .search-container {
+    height: 100px;
+  }
+
+  .track-container {
+    height: calc(100vh - 100px);
+    overflow-y: auto;
+  }
 }
 
 .tile {
