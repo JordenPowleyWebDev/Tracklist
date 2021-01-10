@@ -5,6 +5,7 @@ import { format } from 'date-fns'
 import Page from "./components/Page";
 
 window.$ = window.jQuery = require('jquery');
+window._ = require('lodash');
 
 export default class App extends React.Component {
     constructor(props) {
@@ -13,7 +14,6 @@ export default class App extends React.Component {
         this.state = {
             loaded:         false,
             last_updated:   null,
-            tracks:         null,
             playlists:      null,
         };
     }
@@ -24,15 +24,18 @@ export default class App extends React.Component {
         let playlists   = TrackList.playlists;
 
         for (let i = 0; i < playlists.length; i++) {
-            playlists[i].tracks = playlists[i].tracks.map((element, index) => {
-                return tracks[element];
-            });
+            if (playlists[i].name === "All Tracks") {
+                playlists[i].tracks = Object.values(tracks);
+            } else {
+                playlists[i].tracks = playlists[i].tracks.map((element, index) => {
+                    return tracks[element];
+                });
+            }
         }
 
         this.setState({
             loaded:         true,
             last_updated:   lastUpdated,
-            tracks:         tracks,
             playlists:      playlists,
         });
     }
@@ -44,7 +47,7 @@ export default class App extends React.Component {
     }
 
     render() {
-        const { loaded, last_updated, tracks, playlists } = this.state;
+        const { loaded, last_updated, playlists } = this.state;
 
         if (!loaded) {
             return this.renderLoading();
@@ -52,7 +55,6 @@ export default class App extends React.Component {
 
         return (
             <Page
-                tracks={tracks}
                 playlists={playlists}
                 last_updated={last_updated}
             />

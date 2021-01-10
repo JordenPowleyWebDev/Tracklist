@@ -1,11 +1,78 @@
 import React from 'react';
+import Filters from "./Filters";
+import Playlists from "./Playlists";
+import Tracks from "./Tracks";
 
 export default class Page extends React.Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            searchValue: "",
+            selectedPlaylist: "All Tracks",
+        };
+
+        this.getTracks      = this.getTracks.bind(this);
+        this.filterTracks   = this.filterTracks.bind(this);
+    }
+
+    getTracks() {
+        const { searchValue, selectedPlaylist } = this.state;
+        const { playlists } = this.props;
+
+        for (let i = 0; i < playlists.length; i++) {
+            if (playlists[i].name === selectedPlaylist) {
+                return playlists[i].tracks;
+            }
+        }
+    }
+
+    filterTracks(tracks) {
+        const { searchValue } = this.state;
+
+        return tracks.filter(function (track) {
+            const name = track.name.toLowerCase();
+            const artist = track.artist.toLowerCase();
+            if (name.includes(searchValue.toLowerCase())) {
+                return track;
+            } else if (artist.includes(searchValue.toLowerCase())) {
+                return track;
+            }
+        });
     }
 
     render() {
-        return (<h1>All Loaded</h1>)
+        const { searchValue, selectedPlaylist } = this.state;
+        const { playlists } = this.props;
+
+        let tracks = this.getTracks();
+        tracks = this.filterTracks(tracks);
+
+
+        return (
+            <div className={"container-fluid m-0 p-0 h-100 d-flex justify-content-between"}>
+                <div className="left-container">
+                    <Playlists
+                        playlists={playlists}
+                        selectedPlaylist={selectedPlaylist}
+                        onChange={(name) => this.setState({ selectedPlaylist: name })}
+                    />
+                </div>
+                <div className="right-container">
+                    <Filters
+                        searchValue={searchValue}
+                        searchValueChange={(value) => this.setState({ searchValue: value })}
+                    />
+                    <div className={"px-3 text-dark-blue text-center no-select"}>
+                        <small>Click a track to copy the details and past in chat to make a request.</small>
+                        <br />
+                        <small>If I like it, I may play it</small>
+                    </div>
+                    <Tracks
+                        tracks={tracks}
+                    />
+                </div>
+            </div>
+        );
     }
 }

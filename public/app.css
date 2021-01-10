@@ -17101,6 +17101,10 @@ body {
   background: #020623;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 #app {
   width: 100%;
   min-height: 100vh;
@@ -17235,5 +17239,52 @@ h6,
   100% {
     background-position: 0 50%;
   }
+}
+
+.left-container {
+  width: 25%;
+  height: 100vh;
+  display: block;
+  position: relative;
+}
+
+.left-container .playlist-container {
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.right-container {
+  width: 75%;
+  height: 100vh;
+  display: block;
+  position: relative;
+  overflow-y: auto;
+  background: #fff;
+}
+
+.tile {
+  transition: 0.2s ease-in;
+  color: #fff;
+}
+
+.tile.track {
+  background: white;
+  color: #020623;
+}
+
+.tile:hover {
+  color: #fff !important;
+  border-color: #ff224b !important;
+  background: #ff224b !important;
+}
+
+.tile.selected {
+  background: #ff224b !important;
+  color: #fff !important;
+  border-color: #ff224b !important;
+}
+
+.tile.selected + .playlist {
+  border-top-color: #ff224b !important;
 }
 

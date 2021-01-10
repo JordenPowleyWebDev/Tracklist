@@ -40,6 +40,7 @@ $playlists = [
     "Bassline",
     "Modern Pop",
     "Pop",
+    "Ruby Playlist"
 ];
 
 /**
@@ -53,6 +54,11 @@ function processPlaylists($xml)
     global $playlists;
 
     $processed = [];
+
+    $processed[] = [
+        "name"      => "All Tracks",
+        "tracks"    => []
+    ];
 
     // Loop through thr root nodes
     foreach ($xml->PLAYLISTS->NODE as $rootNode) {

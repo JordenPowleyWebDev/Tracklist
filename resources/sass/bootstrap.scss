@@ -3,6 +3,10 @@ body {
   background: $darkBlue;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 #app {
   width: 100%;
   min-height: 100vh;
@@ -67,5 +71,52 @@ h1, h2, h3, h4, h5, h6,
     0%{background-position:0 50%}
     50%{background-position:100% 50%}
     100%{background-position:0 50%}
+  }
+}
+
+.left-container {
+  width: 25%;
+  height: 100vh;
+  display: block;
+  position: relative;
+
+  .playlist-container {
+    height: 100vh;
+    overflow-y: auto;
+  }
+}
+
+.right-container {
+  width: 75%;
+  height: 100vh;
+  display: block;
+  position: relative;
+  overflow-y: auto;
+  background: $white;
+}
+
+.tile {
+  transition: 0.2s ease-in;
+  color: $white;
+
+  &.track {
+    background: white;
+    color: $darkBlue;
+  }
+
+  &:hover {
+    color: $white !important;
+    border-color: $redPink !important;
+    background: $redPink !important;
+  }
+
+  &.selected {
+    background: $redPink !important;
+    color: $white !important;
+    border-color: $redPink !important;
+
+    & + .playlist {
+      border-top-color: $redPink !important;
+    }
   }
 }
