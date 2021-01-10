@@ -1,0 +1,71 @@
+body {
+  font-family: $raleway;
+  background: $darkBlue;
+}
+
+#app {
+  width: 100%;
+  min-height: 100vh;
+  display: block;
+  position: relative;
+}
+
+a , a:active, a:visited{
+  text-decoration: none;
+  transition: opacity 0.2s ease-in;
+
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: $ubuntu;
+  font-weight: 200 !important;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.font-raleway {font-family: $raleway}
+.font-ubuntu {font-family: $ubuntu}
+
+.text-dark-blue {color: $darkBlue;}
+.text-light-blue {color: $lightBlue;}
+.text-red-pink {color: $redPink;}
+
+.bg-dark-blue {background-color: $darkBlue;}
+.bg-light-blue {background-color: $lightBlue;}
+.bg-red-pink {background-color: $redPink;}
+
+.no-select {
+  user-select: none;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.border-dark-blue {border-color: $darkBlue !important;}
+.border-light-blue {border-color: $lightBlue !important;}
+.border-red-pink {border-color: $redPink !important;}
+
+.loading {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: $white;
+}
+
+.gradient-background {
+  background: linear-gradient(270deg, #626cb0, #020623);
+  background-size: 400% 400%;
+  animation: HeroAnimation 45s ease infinite;
+
+  @keyframes HeroAnimation {
+    0%{background-position:0 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0 50%}
+  }
+}
