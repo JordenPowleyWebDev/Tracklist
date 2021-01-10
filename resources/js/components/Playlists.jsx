@@ -4,7 +4,12 @@ export default class Playlists extends React.Component {
     constructor(props) {
         super(props);
 
-        this.renderTile = this.renderTile.bind(this);
+        this.state = {
+            menuOpen: false,
+        }
+
+        this.renderTile         = this.renderTile.bind(this);
+        this.renderMobileList   = this.renderMobileList.bind(this);
     }
 
     renderTile(index, playlist) {
@@ -23,19 +28,22 @@ export default class Playlists extends React.Component {
         return (
             <div
                 key={index}
-                onClick={() => onChange(playlist.name)}
+                onClick={() => {
+                    this.setState({menuOpen: false})
+                    onChange(playlist.name)
+                }}
                 className={classes}
             >
-                <div className={"no-select"}>{playlist.name}</div>
+                <div className={"no-select text-center text-lg-left"}>{playlist.name}</div>
             </div>
         );
     }
 
-    render() {
+    renderList() {
         const { playlists } = this.props;
 
         return (
-            <div className={"h-100 d-flex flex-column playlist-container"}>
+            <div className={"d-none d-lg-block"}>
                 <div className={"logo-container d-flex justify-content-center"}>
                     <div className={"h5 mb-0 text-white text-center no-select d-flex justify-content-center align-items-center"}>JordenWithAnE</div>
                 </div>
@@ -44,6 +52,36 @@ export default class Playlists extends React.Component {
                         return this.renderTile(index, element);
                     })}
                 </div>
+            </div>
+        );
+    }
+
+    renderMobileList() {
+        const { menuOpen } = this.state;
+        const { selectedPlaylist, playlists } = this.props;
+
+        return (
+            <div className={"d-block d-lg-none pt-3 px-3"}>
+                <div onClick={() => this.setState({menuOpen: !menuOpen})}
+                     className={'w-100 p-2 border border-red-pink bg-red-pink text-white text-center cursor-pointer'}>
+                    {selectedPlaylist}
+                </div>
+                <div className={menuOpen ? "playlist-menu p-3 open" : "playlist-menu p-3"}>
+                    {playlists && playlists.map((element, index) => {
+                        return this.renderTile(index, element);
+                    })}
+                </div>
+            </div>
+        );
+    }
+
+    render() {
+
+
+        return (
+            <div className={"h-100 d-flex flex-column playlist-container"}>
+                {this.renderList()}
+                {this.renderMobileList()}
             </div>
         );
     }

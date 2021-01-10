@@ -17242,6 +17242,21 @@ h6,
   }
 }
 
+.main-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+@media (max-width: 991.98px) {
+  .main-container {
+    width: 100%;
+    flex-direction: column;
+  }
+}
+
 .left-container {
   width: 25%;
   height: 100vh;
@@ -17249,11 +17264,24 @@ h6,
   position: relative;
 }
 
+@media (max-width: 991.98px) {
+  .left-container {
+    width: 100%;
+    height: auto;
+  }
+}
+
 .left-container .logo-container {
   width: 100%;
   height: 100px;
   position: relative;
   display: flex;
+}
+
+@media (max-width: 991.98px) {
+  .left-container .logo-container {
+    display: none !important;
+  }
 }
 
 .left-container .logo-container div {
@@ -17265,6 +17293,22 @@ h6,
   overflow-y: auto;
 }
 
+.left-container .playlist-menu {
+  width: 100vw;
+  height: 100vh;
+  z-index: 500;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #020623;
+  overflow-y: auto;
+}
+
+.left-container .playlist-menu.open {
+  display: block;
+}
+
 .right-container {
   width: 75%;
   height: 100vh;
@@ -17273,8 +17317,21 @@ h6,
   background: #fff;
 }
 
+@media (max-width: 991.98px) {
+  .right-container {
+    width: 100%;
+    height: auto;
+  }
+}
+
 .right-container .search-container {
   height: 100px;
+}
+
+@media (max-width: 991.98px) {
+  .right-container .search-container {
+    background: #020623;
+  }
 }
 
 .right-container .track-container {

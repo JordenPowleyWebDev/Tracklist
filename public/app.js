@@ -77091,7 +77091,7 @@ var Page = /*#__PURE__*/function (_React$Component) {
       var tracks = this.getTracks();
       tracks = this.filterTracks(tracks);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container-fluid m-0 p-0 h-100 d-flex justify-content-between"
+        className: "container-fluid m-0 p-0 main-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "left-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Playlists__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -77174,13 +77174,19 @@ var Playlists = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, Playlists);
 
     _this = _super.call(this, props);
+    _this.state = {
+      menuOpen: false
+    };
     _this.renderTile = _this.renderTile.bind(_assertThisInitialized(_this));
+    _this.renderMobileList = _this.renderMobileList.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(Playlists, [{
     key: "renderTile",
     value: function renderTile(index, playlist) {
+      var _this2 = this;
+
       var _this$props = this.props,
           selectedPlaylist = _this$props.selectedPlaylist,
           playlists = _this$props.playlists,
@@ -77198,21 +77204,25 @@ var Playlists = /*#__PURE__*/function (_React$Component) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         key: index,
         onClick: function onClick() {
-          return onChange(playlist.name);
+          _this2.setState({
+            menuOpen: false
+          });
+
+          onChange(playlist.name);
         },
         className: classes
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "no-select"
+        className: "no-select text-center text-lg-left"
       }, playlist.name));
     }
   }, {
-    key: "render",
-    value: function render() {
-      var _this2 = this;
+    key: "renderList",
+    value: function renderList() {
+      var _this3 = this;
 
       var playlists = this.props.playlists;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "h-100 d-flex flex-column playlist-container"
+        className: "d-none d-lg-block"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "logo-container d-flex justify-content-center"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -77220,8 +77230,39 @@ var Playlists = /*#__PURE__*/function (_React$Component) {
       }, "JordenWithAnE")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "px-3 pb-3 d-block position-relative"
       }, playlists && playlists.map(function (element, index) {
-        return _this2.renderTile(index, element);
+        return _this3.renderTile(index, element);
       })));
+    }
+  }, {
+    key: "renderMobileList",
+    value: function renderMobileList() {
+      var _this4 = this;
+
+      var menuOpen = this.state.menuOpen;
+      var _this$props2 = this.props,
+          selectedPlaylist = _this$props2.selectedPlaylist,
+          playlists = _this$props2.playlists;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "d-block d-lg-none pt-3 px-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        onClick: function onClick() {
+          return _this4.setState({
+            menuOpen: !menuOpen
+          });
+        },
+        className: 'w-100 p-2 border border-red-pink bg-red-pink text-white text-center cursor-pointer'
+      }, selectedPlaylist), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: menuOpen ? "playlist-menu p-3 open" : "playlist-menu p-3"
+      }, playlists && playlists.map(function (element, index) {
+        return _this4.renderTile(index, element);
+      })));
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "h-100 d-flex flex-column playlist-container"
+      }, this.renderList(), this.renderMobileList());
     }
   }]);
 
