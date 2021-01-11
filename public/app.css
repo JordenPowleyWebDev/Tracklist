@@ -17272,6 +17272,7 @@ h6,
   .left-container {
     width: 100%;
     height: auto;
+    border: 0 !important;
   }
 }
 
@@ -17330,18 +17331,19 @@ h6,
 
 .right-container .search-container {
   height: 100px;
-}
-
-@media (max-width: 991.98px) {
-  .right-container .search-container {
-    background: #020623;
-  }
+  background: #020623;
 }
 
 .right-container .track-container {
   height: calc(100vh - 100px);
   overflow-y: auto;
   scroll-behavior: smooth;
+}
+
+@media (max-width: 991.98px) {
+  .right-container .track-container {
+    height: calc(100vh - 158px);
+  }
 }
 
 .right-container .scroll-button {

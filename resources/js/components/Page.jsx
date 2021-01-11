@@ -52,7 +52,7 @@ export default class Page extends React.Component {
 
         return (
             <div className={"container-fluid m-0 p-0 main-container"}>
-                <div className="left-container">
+                <div className="left-container border-right border-white">
                     <Playlists
                         playlists={playlists}
                         selectedPlaylist={selectedPlaylist}

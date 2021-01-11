@@ -77093,7 +77093,7 @@ var Page = /*#__PURE__*/function (_React$Component) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container-fluid m-0 p-0 main-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "left-container"
+        className: "left-container border-right border-white"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Playlists__WEBPACK_IMPORTED_MODULE_2__["default"], {
         playlists: playlists,
         selectedPlaylist: selectedPlaylist,
@@ -77364,7 +77364,7 @@ var Tracks = /*#__PURE__*/function (_React$Component) {
         }
 
         if (success) {
-          alert("Track copied, paste in chat"); // Remove temp element.
+          alert("Track info copied, paste in chat"); // Remove temp element.
 
           tmpElem.remove();
         }
@@ -77381,7 +77381,7 @@ var Tracks = /*#__PURE__*/function (_React$Component) {
         onClick: function onClick() {
           return _this2.handleClick(track);
         },
-        className: "w-100 mb-2 p-3 border border-dark-blue cursor-pointer tile track"
+        className: "w-100 mb-3 p-3 border border-dark-blue cursor-pointer tile track"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row m-0 p-0"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -77399,10 +77399,10 @@ var Tracks = /*#__PURE__*/function (_React$Component) {
 
       var tracks = this.props.tracks;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "d-flex flex-column p-3 track-container",
+        className: "d-flex flex-column p-3 py-4 track-container",
         ref: this.scrollView
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "px-3 mb-3 text-dark-blue text-center no-select"
+        className: "px-3 mb-4 text-dark-blue text-center no-select"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, "Click a track to copy the details and paste in chat to make a request."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, "If I like it, I may play it")), tracks && tracks.length > 0 && tracks.map(function (element, index) {
         return _this3.renderTile(index, element);
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

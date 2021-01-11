@@ -101,6 +101,7 @@ h1, h2, h3, h4, h5, h6,
   @include media-breakpoint-down(md) {
     width: 100%;
     height: auto;
+    border: 0 !important;
   }
 
   .logo-container {
@@ -155,16 +156,17 @@ h1, h2, h3, h4, h5, h6,
 
   .search-container {
     height: 100px;
-
-    @include media-breakpoint-down(md) {
-      background: $darkBlue;
-    }
+    background: $darkBlue;
   }
 
   .track-container {
     height: calc(100vh - 100px);
     overflow-y: auto;
     scroll-behavior: smooth;
+
+    @include media-breakpoint-down(md) {
+      height: calc(100vh - 158px);
+    }
   }
 
   .scroll-button {
