@@ -66,7 +66,7 @@ export default class Tracks extends React.Component {
             <div
                 key={track.id}
                 onClick={() => this.handleClick(track)}
-                className={"w-100 mb-3 p-3 border border-dark-blue cursor-pointer tile track"}
+                className={"w-100 mb-3 p-3 p-lg-4 border border-dark-blue cursor-pointer tile track"}
             >
                 <div className="row m-0 p-0">
                     <div className="col-12 col-md-6 m-0 p-0 pr-md-2">
@@ -85,7 +85,7 @@ export default class Tracks extends React.Component {
         const { tracks } = this.props;
 
         return (
-            <div className={"d-flex flex-column p-3 py-4 track-container"}
+            <div className={"d-flex flex-column p-3 px-lg-5 py-4 track-container"}
                  ref={this.scrollView}>
                 <div className={"px-3 mb-4 text-dark-blue text-center no-select"}>
                     <small>Click a track to copy the details and paste in chat to make a request.</small>

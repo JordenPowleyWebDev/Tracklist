@@ -76966,7 +76966,7 @@ var Filters = /*#__PURE__*/function (_React$Component) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row m-0 p-0 border-bottom border-dark-blue"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-12 m-0 p-0 px-3 search-container d-flex justify-content-center align-items-center"
+        className: "col-12 m-0 p-0 px-3 px-lg-5 search-container d-flex justify-content-center align-items-center"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "w-100 bg-white border border-dark-blue text-dark-blue p-2",
         type: "text",
@@ -77228,7 +77228,7 @@ var Playlists = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "h5 mb-0 text-white text-center no-select d-flex justify-content-center align-items-center"
       }, "JordenWithAnE")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "px-3 pb-3 d-block position-relative"
+        className: "px-3 px-lg-4 pb-3 d-block position-relative"
       }, playlists && playlists.map(function (element, index) {
         return _this3.renderTile(index, element);
       })));
@@ -77381,7 +77381,7 @@ var Tracks = /*#__PURE__*/function (_React$Component) {
         onClick: function onClick() {
           return _this2.handleClick(track);
         },
-        className: "w-100 mb-3 p-3 border border-dark-blue cursor-pointer tile track"
+        className: "w-100 mb-3 p-3 p-lg-4 border border-dark-blue cursor-pointer tile track"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row m-0 p-0"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -77399,7 +77399,7 @@ var Tracks = /*#__PURE__*/function (_React$Component) {
 
       var tracks = this.props.tracks;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "d-flex flex-column p-3 py-4 track-container",
+        className: "d-flex flex-column p-3 px-lg-5 py-4 track-container",
         ref: this.scrollView
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "px-3 mb-4 text-dark-blue text-center no-select"

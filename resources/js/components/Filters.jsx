@@ -27,7 +27,7 @@ export default class Filters extends React.Component {
 
         return (
             <div className={"row m-0 p-0 border-bottom border-dark-blue"}>
-                <div className="col-12 m-0 p-0 px-3 search-container d-flex justify-content-center align-items-center">
+                <div className="col-12 m-0 p-0 px-3 px-lg-5 search-container d-flex justify-content-center align-items-center">
                     <input
                         className={"w-100 bg-white border border-dark-blue text-dark-blue p-2"}
                         type="text"

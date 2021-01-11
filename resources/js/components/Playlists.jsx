@@ -47,7 +47,7 @@ export default class Playlists extends React.Component {
                 <div className={"logo-container d-flex justify-content-center"}>
                     <div className={"h5 mb-0 text-white text-center no-select d-flex justify-content-center align-items-center"}>JordenWithAnE</div>
                 </div>
-                <div className={"px-3 pb-3 d-block position-relative"}>
+                <div className={"px-3 px-lg-4 pb-3 d-block position-relative"}>
                     {playlists && playlists.map((element, index) => {
                         return this.renderTile(index, element);
                     })}
