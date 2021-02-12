@@ -70,7 +70,7 @@ export default class Tracks extends React.Component {
             >
                 <div className="row m-0 p-0">
                     <div className="col-12 col-md-6 m-0 p-0 pr-md-2">
-                        <div>{track.name}</div>
+                        <div style={{ fontWeight: "bold" }}>{track.name}</div>
                     </div>
                     <div className="col-12 col-md-6 m-0 p-0 pl-md-2">
                         <div>{track.artist}</div>
@@ -84,6 +84,10 @@ export default class Tracks extends React.Component {
     render() {
         const { tracks } = this.props;
 
+        let total = 0;
+        if (tracks && tracks.length > 0) {
+            total = tracks.length
+        }
         return (
             <div className={"d-flex flex-column p-3 px-lg-5 py-4 track-container"}
                  ref={this.scrollView}>
@@ -91,6 +95,8 @@ export default class Tracks extends React.Component {
                     <small>Click a track to copy the details and paste in chat to make a request.</small>
                     <br />
                     <small>If I like it, I may play it</small>
+                    <br />
+                    <small style={{fontWeight: 'bold'}}>{total} Tracks</small>
                 </div>
                 {tracks && tracks.length > 0 && tracks.map((element, index) => {
                     return this.renderTile(index, element);
